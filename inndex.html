@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body{
+            background-color: cornflowerblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 97.9vh;
+        }
+        #form-container{
+            background-color: white;
+            padding: 60px;
+            text-align: center;
+        }
+        input{
+            width: 300px;
+            padding: 11px;
+            margin: 6px;
+        }
+        input[type="submit"]{
+            width: 150px;
+            background-color: cornflowerblue;
+            color: white;
+            border: 2px solid cornflowerblue;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        h2{
+            margin: 0px 0px 10px 0px;
+        }
+        .error{
+            color: red;
+            text-align: left;
+            position: relative;
+            left: 7px;
+            font-size: 18px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <h2>Login</h2>
+        <form action="" onsubmit="return validationForm()">
+            <input type="text" id="userName" placeholder="User Name"> <br>
+            <p id="userNameError" class="error"></p>
+            <input type="password" id="pass" placeholder="password"> <br>
+            <p id="passError" class="error"></p>
+            <input type="submit">
+        </form>
+    </div>
+
+    <script>
+        let userName = document.getElementById('userName')
+        let pass = document.getElementById('pass')
+
+        function validationForm(){
+            if(userName.value == ""){
+                document.getElementById('userNameError').innerHTML = 'field required'
+            }else if(userName.value.length < 3){
+                document.getElementById('userNameError').innerHTML = 'user name should be at least 3 char'
+            }else{
+                document.getElementById('userNameError').innerHTML = ''
+            }
+            if(pass.value == ""){
+                document.getElementById('passError').innerHTML = 'field required'
+            }else{
+                document.getElementById('passError').innerHTML = ''
+            }
+            if(pass.value.length > 1 && userName.value.length >= 3){
+                return true
+            }else{
+                return false
+            }
+        }
+    </script>
+</body>
+</html>
